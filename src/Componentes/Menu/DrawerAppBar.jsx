@@ -15,9 +15,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom' ;
+import styled from 'styled-components'
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
+
+const HeaderLink = styled(Link)`
+  text-decoration: underline;
+  margin-right: 1em
+
+`
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -70,9 +77,9 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Link key={item} sx={{ color: '#fff' }} to={`/${item}`}>
+              <HeaderLink key={item} sx={{ color: '#fff' }} to={`/${item}`}>
                 {item}
-              </Link>
+              </HeaderLink>
             ))}
           </Box>
         </Toolbar>
