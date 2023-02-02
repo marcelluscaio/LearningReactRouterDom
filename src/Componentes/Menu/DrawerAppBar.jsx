@@ -15,18 +15,28 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom' ;
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
 
-const HeaderLink = styled(Link)`
-  text-decoration: underline;
-  margin-right: 1em
 
-`
+
+
+
 
 function DrawerAppBar(props) {
+  const page = useLocation();
+
+  const HeaderLink = styled(Link)`
+    margin-right: 1em;
+    text-decoration: ${props => props.chave ? 'underline' : 'none'};
+      &:is(:hover){
+        text-decoration: underline
+      };
+      
+  `  
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -76,8 +86,8 @@ function DrawerAppBar(props) {
             MUI
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <HeaderLink key={item} sx={{ color: '#fff' }} to={`/${item}`}>
+            {navItems.map((item) =>(
+              <HeaderLink key={item} chave={page.pathname === `/${item}`} sx={{ color: '#fff' }} to={`/${item}`}>
                 {item}
               </HeaderLink>
             ))}
