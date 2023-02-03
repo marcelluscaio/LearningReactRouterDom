@@ -1,6 +1,12 @@
+import Banner from '../../Componentes/Banner/Banner'
+
 function Inicio() {
    return(
-      <h1>Início</h1>
+      <main>
+         <h1>Início</h1>
+         <Banner />
+      </main>
+
    )
 }
 

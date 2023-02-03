@@ -10,6 +10,10 @@ function App() {
       <DrawerAppBar></DrawerAppBar>
       <Routes>
         <Route
+          path="/"
+          element={<Inicio />}
+         />
+        <Route
           path="/Home"
           element={<Inicio />}
          />
